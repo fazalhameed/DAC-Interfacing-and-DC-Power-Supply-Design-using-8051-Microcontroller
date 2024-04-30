@@ -1,0 +1,5 @@
+".\Objects\STARTUP.obj",
+".\Objects\ADC.obj",
+".\Objects\lcd.obj" 
+TO ".\Objects\waveform" 
+PRINT(".\Listings\waveform.m51")

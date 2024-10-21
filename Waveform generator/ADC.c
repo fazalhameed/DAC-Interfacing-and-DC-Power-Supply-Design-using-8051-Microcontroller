@@ -17,7 +17,6 @@ void Timer0_Init() {
     TH0 = 0x00;   
     IE = 0x82;
 }
-
 void Timer0_ISR() interrupt 1 {
     PWM_PIN = ~PWM_PIN;  // Toggle PWM_PIN
 
@@ -29,7 +28,6 @@ void Timer0_ISR() interrupt 1 {
         TL0 = OFF_Period;
     }
 }
-
 void Set_Duty_Cycle(unsigned char duty_cycle) {
     unsigned int Period = 255;
     ON_Period = ((Period / 100.0) * duty_cycle);
@@ -37,7 +35,6 @@ void Set_Duty_Cycle(unsigned char duty_cycle) {
     ON_Period = 255 - ON_Period;
     OFF_Period = 255 - OFF_Period;
 }
-
 void main() {
     Timer0_Init();  // Initialize Timer 0 for PWM generation
 
@@ -47,7 +44,6 @@ void main() {
         }
     }
 }
-
 /* 
 //Sawtooth Wave Form
 #include <reg52.h>

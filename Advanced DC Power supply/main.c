@@ -9,14 +9,12 @@ unsigned int DutyCycle;
 sbit C1=P1^3;
 sbit C2=P1^2;
 sbit C3=P1^1;
-sbit C4=P1^0;
-                                                              
+sbit C4=P1^0;                                                             
 sbit R1=P1^7;
 sbit R2=P1^6;
 sbit R3=P1^5;
 sbit R4=P1^4;
      
-
 //PWM SETUP
 void Timer0_Intilization ()
 {
@@ -24,30 +22,27 @@ void Timer0_Intilization ()
 	TH0=0x17;
 	TR0=1;
 	IE=0x82;
-
 }
 
 void Timer0 () interrupt 1
 { 
-	PWM_PIN = ~PWM_PIN ;	
-	if(PWM_PIN)
+  PWM_PIN = ~PWM_PIN;
+  if(PWM_PIN)
 	   {
-		  TH0=ON_Period >> 8;
-			 TL0=ON_Period;
-		 }
-		 else
-	   {
-		   TH0=OFF_Period >> 8;
-			 TL0=OFF_Period;
-		 }	
+	     TH0=ON_Period >> 8;
+	     TL0=ON_Period;
+	     }
+	      else
+	     {
+	      TH0=OFF_Period >> 8;
+	      TL0=OFF_Period;
+	      }	
 }
-
-
 
 void Set_Duty_Cycle (float duty_cycle)
 {  
 	unsigned int Period;
-  Period =255 - 0x17 ;
+        Period =255 - 0x17 ;
 	ON_Period =((Period/100.0)*duty_cycle);
 	OFF_Period = Period -ON_Period;
 	ON_Period =  255-ON_Period;
@@ -55,7 +50,6 @@ void Set_Duty_Cycle (float duty_cycle)
 	
 
 }
-
 
 //Keypad
 
@@ -123,14 +117,13 @@ char Key_Pressed()
         }
 
         R1 = 1; R2 = 1; R3 = 1; R4 = 0;
-				  if(C1==0)
-			 { 
-				    Delay(10); 
-
+	 if(C1==0)
+	 { 
+	    Delay(10); 
             LCD_Command(0x01);  // Clear the LCD screen
             Delay(10);  // Add appropriate delay after LCD command
 
-             LCD_Command(0x80);  // Set cursor to the first line
+            LCD_Command(0x80);  // Set cursor to the first line
             Delay(10);  // Add appropriate delay after LCD command
 
             String_data("DutyCycle");  // Display your desired text
@@ -139,12 +132,12 @@ char Key_Pressed()
             LCD_Command(0xC0);  // Set cursor to the first line
             Delay(10);  
 
-				    String_data("Voltage:");  // Display your desired text
+            String_data("Voltage:");  // Display your desired text
             Delay(10);  
             
-				 Delay(10000);
+	    Delay(10000);
 				 
-				 } 
+	 } 
         else if (C2 == 0)
         {
             key = '0';
@@ -181,8 +174,8 @@ float GetFloatFromKeypad()
     int decimalEntered = 0;
     int decimalPlace = 0;
     float decimal ;
-  	float num ;
-	  int integerPart;
+    float num ;
+    int integerPart;
     int decimalPart,digit ;
     while (1)
     {

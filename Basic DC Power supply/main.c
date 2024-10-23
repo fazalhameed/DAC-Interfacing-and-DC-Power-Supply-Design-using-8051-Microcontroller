@@ -3,12 +3,8 @@
 # include "key.h"
 # include "ADC.h"
 
-
-
 extern unsigned int DutyCycle_Limit;
 float voltage, value;
-
-
 void main (void)
 {
   LCD_Intialization();                  
@@ -20,11 +16,9 @@ void main (void)
 	
 	while(1)
     { 
-		  External_Keys();               
-			Delay(1000);
-   
-			DAC_VOLTAGE ();                  
-			Delay(1000);
-		   	
-		}
+      External_Keys();               
+      Delay(1000);
+      DAC_VOLTAGE ();                  
+      Delay(1000);		   	
+      }
 }

@@ -10,13 +10,11 @@ unsigned int DutyCycle;
 sbit C1=P1^3;
 sbit C2=P1^2;
 sbit C3=P1^1;
-sbit C4=P1^0;
-                                                              
+sbit C4=P1^0;                                                              
 sbit R1=P1^7;
 sbit R2=P1^6;
 sbit R3=P1^5;
 sbit R4=P1^4;
-
 
 int Number[3];
 unsigned char key[3];            
@@ -256,9 +254,8 @@ void main (void)
 					{ Ent_num--;   break;  }
 				
 			}
-	 
 			
-	     if (Ent_num > 0 || Ent_num <= 3)     
+	if (Ent_num > 0 || Ent_num <= 3)     
 		   {                                     
        	if(Ent_num==1)     
 			      {num=Number[0]; LCD_ShowNum(2,1,num,1); LCD_ShowString(2,2,".00");}
